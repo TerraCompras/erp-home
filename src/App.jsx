@@ -7,6 +7,7 @@ const EMPRESAS = [
     nombre: "Parana Logística",
     descripcion: "Operaciones logísticas y marítimas. Gestión de flota, compras, víveres, mantenimiento y reparaciones.",
     icono: "🚢",
+    logo: "/PL.png",
     color: "#213363",
     url: "https://erp-portal-fawn.vercel.app",
     activo: true,
@@ -18,6 +19,7 @@ const EMPRESAS = [
     nombre: "Clean Sea",
     descripcion: "Operaciones de limpieza y servicios marítimos especializados.",
     icono: "⚓",
+    logo: "/Cs.png",
     color: "#1A7A6E",
     url: null,
     activo: false,
@@ -29,6 +31,7 @@ const EMPRESAS = [
     nombre: "Terra Mare Services",
     descripcion: "Servicios de crewing y operaciones marítimas para clientes externos.",
     icono: "🌊",
+    logo: "/logo-tm.png",
     color: "#235C96",
     url: null,
     activo: false,
@@ -59,8 +62,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   width: 100%; max-width: 400px;
   box-shadow: 0 20px 60px rgba(0,0,0,.3);
 }
-.login-logo { display: flex; justify-content: center; margin-bottom: 24px; }
-.login-logo img { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; }
+.login-logos {
+  display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+.login-logos img {
+  width: 48px; height: 48px; border-radius: 50%; object-fit: cover;
+  border: 2px solid #D6E0ED;
+}
 .login-title { text-align: center; font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
 .login-sub { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 28px; font-family: var(--mono); letter-spacing: .5px; }
 .login-fg { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
@@ -87,8 +95,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   justify-content: space-between; height: 64px;
   box-shadow: 0 2px 12px rgba(33,51,99,.2); position: sticky; top: 0; z-index: 10;
 }
-.header-brand { display: flex; align-items: center; gap: 14px; }
-.header-logo-img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(255,255,255,.2); }
+.header-brand { display: flex; align-items: center; gap: 16px; }
+.header-logos { display: flex; align-items: center; gap: 8px; }
+.header-logos img {
+  width: 30px; height: 30px; border-radius: 50%; object-fit: cover;
+  border: 1.5px solid rgba(255,255,255,.25);
+}
+.header-divider { width: 1px; height: 28px; background: rgba(255,255,255,.15); margin: 0 4px; }
 .header-main { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 1.5px; text-transform: uppercase; }
 .header-sub { font-size: 9px; color: rgba(255,255,255,.45); letter-spacing: .5px; font-family: var(--mono); margin-top: 1px; }
 .header-right { display: flex; align-items: center; gap: 16px; }
@@ -139,10 +152,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .card-banner { height: 6px; background: var(--card-color); }
 .card-body { padding: 24px; }
 .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
-.card-icono {
-  width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center;
-  justify-content: center; font-size: 24px; flex-shrink: 0;
+.card-logo {
+  width: 52px; height: 52px; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border); background: #f8f8f8; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
+.card-logo img { width: 100%; height: 100%; object-fit: cover; }
+
 .badge-activo { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; letter-spacing: .5px; text-transform: uppercase; }
 .badge-prox { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; letter-spacing: .5px; text-transform: uppercase; }
 .badge-sin-acceso { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; letter-spacing: .5px; text-transform: uppercase; }
@@ -169,13 +185,15 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 /* LOADING */
 .loading-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--navy); }
 .loading-inner { text-align: center; }
-.loading-inner img { width: 64px; height: 64px; border-radius: 50%; margin-bottom: 16px; animation: pulse 1.5s ease-in-out infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+.loading-logos { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; }
+.loading-logos img { width: 40px; height: 40px; border-radius: 50%; opacity: .6; animation: pulse 1.5s ease-in-out infinite; }
+.loading-logos img:nth-child(2) { animation-delay: .2s; }
+.loading-logos img:nth-child(3) { animation-delay: .4s; }
+@keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:.2} }
 .loading-text { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.4); letter-spacing: 2px; text-transform: uppercase; }
 `;
 
-// ─── LOGIN ────────────────────────────────────────────────────────────────────
-function LoginPage({ onLogin }) {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -187,10 +205,8 @@ function LoginPage({ onLogin }) {
     setLoading(true);
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) {
-        setError("Email o contraseña incorrectos.");
-      }
-    } catch (e) {
+      if (error) setError("Email o contraseña incorrectos.");
+    } catch {
       setError("Error al iniciar sesión.");
     } finally {
       setLoading(false);
@@ -200,10 +216,12 @@ function LoginPage({ onLogin }) {
   return (
     <div className="login-page">
       <div className="login-card">
-        <div className="login-logo">
-          <img src="/logo-tm.png" alt="Terra Mare Group" />
+        <div className="login-logos">
+          <img src="/PL.png" alt="Parana Logística" title="Parana Logística" />
+          <img src="/Cs.png" alt="Clean Sea" title="Clean Sea" />
+          <img src="/logo-tm.png" alt="Terra Mare" title="Terra Mare Services" />
         </div>
-        <div className="login-title">Terra Mare Group</div>
+        <div className="login-title">Grupo Marítimo ERP</div>
         <div className="login-sub">Sistema integrado de gestión</div>
 
         {error && <div className="login-error">{error}</div>}
@@ -223,14 +241,13 @@ function LoginPage({ onLogin }) {
         </form>
 
         <div className="login-footer">
-          © {new Date().getFullYear()} Terra Mare Group · Acceso restringido
+          © {new Date().getFullYear()} Grupo Marítimo · Acceso restringido
         </div>
       </div>
     </div>
   );
 }
 
-// ─── EMPRESA CARD ─────────────────────────────────────────────────────────────
 function EmpresaCard({ empresa, tieneAcceso }) {
   const puedeAbrir = empresa.activo && empresa.url && tieneAcceso;
   const handleClick = () => { if (puedeAbrir) window.open(empresa.url, "_blank"); };
@@ -245,8 +262,8 @@ function EmpresaCard({ empresa, tieneAcceso }) {
       <div className="card-banner" />
       <div className="card-body">
         <div className="card-top">
-          <div className="card-icono" style={{ background: `${empresa.color}18`, border: `1px solid ${empresa.color}30` }}>
-            {empresa.icono}
+          <div className="card-logo">
+            <img src={empresa.logo} alt={empresa.nombre} />
           </div>
           {!tieneAcceso
             ? <span className="badge-sin-acceso">Sin acceso</span>
@@ -269,7 +286,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
           ? <span className="card-link-disabled">Acceso no autorizado</span>
           : puedeAbrir
             ? <span className="card-link" style={{ color: empresa.color }}>Ingresar al portal →</span>
-            : <span className="card-link-disabled">{empresa.activo ? "En desarrollo" : "Próximamente"}</span>
+            : <span className="card-link-disabled">En desarrollo</span>
         }
         <span style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--muted)" }}>
           {empresa.modulos.length} módulos
@@ -279,15 +296,19 @@ function EmpresaCard({ empresa, tieneAcceso }) {
   );
 }
 
-// ─── HOME ─────────────────────────────────────────────────────────────────────
 function HomePage({ user, empresasPermitidas, onLogout }) {
   return (
     <>
       <header className="header">
         <div className="header-brand">
-          <img src="/logo-tm.png" alt="TM" className="header-logo-img" />
+          <div className="header-logos">
+            <img src="/PL.png" alt="Parana Logística" title="Parana Logística" />
+            <img src="/Cs.png" alt="Clean Sea" title="Clean Sea" />
+            <img src="/logo-tm.png" alt="Terra Mare" title="Terra Mare Services" />
+          </div>
+          <div className="header-divider" />
           <div>
-            <div className="header-main">Terra Mare Group</div>
+            <div className="header-main">Grupo Marítimo ERP</div>
             <div className="header-sub">Sistema integrado de gestión</div>
           </div>
         </div>
@@ -299,8 +320,8 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
 
       <div className="hero">
         <div className="hero-content">
-          <div className="hero-eyebrow">Bienvenido</div>
-          <h1 className="hero-title">Grupo <span>Marítimo</span></h1>
+          <div className="hero-eyebrow">Sistema integrado de gestión</div>
+          <h1 className="hero-title">Grupo <span>Marítimo</span> ERP</h1>
           <p className="hero-desc">Seleccioná la empresa para acceder a su portal de gestión.</p>
         </div>
       </div>
@@ -309,24 +330,19 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
         <div className="section-label">Empresas del grupo</div>
         <div className="empresas-grid">
           {EMPRESAS.map(e => (
-            <EmpresaCard
-              key={e.id}
-              empresa={e}
-              tieneAcceso={empresasPermitidas.includes(e.id)}
-            />
+            <EmpresaCard key={e.id} empresa={e} tieneAcceso={empresasPermitidas.includes(e.id)} />
           ))}
         </div>
       </div>
 
       <footer className="footer">
-        <div className="footer-left">Terra Mare Group · Sistema de Gestión · Confidencial</div>
+        <div className="footer-left">Grupo Marítimo ERP · Confidencial</div>
         <div className="footer-right">v1.0 — {new Date().getFullYear()}</div>
       </footer>
     </>
   );
 }
 
-// ─── ROOT APP ─────────────────────────────────────────────────────────────────
 export default function App() {
   const [session, setSession] = useState(null);
   const [empresasPermitidas, setEmpresasPermitidas] = useState([]);
@@ -352,23 +368,25 @@ export default function App() {
     try {
       const { data } = await supabase.from("user_roles").select("empresas").eq("user_id", userId).single();
       setEmpresasPermitidas(data?.empresas || []);
-    } catch (e) {
+    } catch {
       setEmpresasPermitidas([]);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleLogout = async () => {
-    await supabase.auth.signOut();
-  };
+  const handleLogout = async () => { await supabase.auth.signOut(); };
 
   if (loading) {
     return (
       <div className="loading-page">
         <style>{CSS}</style>
         <div className="loading-inner">
-          <img src="/logo-tm.png" alt="TM" />
+          <div className="loading-logos">
+            <img src="/PL.png" alt="PL" />
+            <img src="/Cs.png" alt="CS" />
+            <img src="/logo-tm.png" alt="TM" />
+          </div>
           <div className="loading-text">Cargando...</div>
         </div>
       </div>
@@ -379,7 +397,7 @@ export default function App() {
     <>
       <style>{CSS}</style>
       {!session
-        ? <LoginPage onLogin={() => {}} />
+        ? <LoginPage />
         : <HomePage user={session.user} empresasPermitidas={empresasPermitidas} onLogout={handleLogout} />
       }
     </>

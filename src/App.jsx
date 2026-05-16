@@ -33,7 +33,7 @@ const EMPRESAS = [
     icono: "🌊",
     logo: "/logo-tm.png",
     color: "#235C96",
-    url: "https://terra-mare-portal.vercel.app,
+    url: "https://terra-mare-portal-9w3x.vercel.app",
     activo: true,
     modulos: ["Transporte Arena"],
     buques: [],

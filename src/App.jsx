@@ -40,13 +40,38 @@ const EMPRESAS = [
   },
 ];
 
+const PROYECTOS = [
+  {
+    id: "ais-analyzer",
+    nombre: "AIS Analyzer",
+    descripcion: "Análisis de datos AIS por viaje. Etiquetado de servicios, análisis de base de zarpe y modelo financiero integrado para evaluación de incorporación de activos.",
+    icono: "📡",
+    color: "#235C96",
+    url: null,
+    activo: false,
+    tags: ["Análisis AIS", "Modelo Financiero", "TIR / VAN", "Base de zarpe"],
+    estado: "En desarrollo",
+  },
+  {
+    id: "arena",
+    nombre: "Transporte de Arena",
+    descripcion: "Evaluación económica del corredor Zárate–SAE para transporte de arena fractura. Modelo probabilístico Monte Carlo con análisis de fricciones operativas.",
+    icono: "⛏",
+    color: "#854F0B",
+    url: "https://terra-mare-portal-9w3x.vercel.app",
+    activo: true,
+    tags: ["Monte Carlo", "P10–P90", "Logística fluvial", "Vaca Muerta"],
+    estado: "Activo",
+  },
+];
+
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --navy: #213363; --blue: #235C96; --mid: #6381A7; --light: #A5B5CC;
   --bg: #EEF2F7; --surface: #FFFFFF; --border: #D6E0ED;
-  --text: #213363; --muted: #6381A7; --danger: #C0392B; --accent2: #1E7E4A;
+  --text: #213363; --muted: #6381A7; --danger: #C0392B; --accent2: #1E7A4A;
   --sans: 'Montserrat', sans-serif; --mono: 'DM Mono', monospace;
 }
 body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -137,6 +162,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 }
 .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
+/* EMPRESAS */
 .empresas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
 .empresa-card {
@@ -162,6 +188,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .badge-activo { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #D1FAE5; color: #065F46; border: 1px solid #A7F3D0; letter-spacing: .5px; text-transform: uppercase; }
 .badge-prox { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #F3F4F6; color: #6B7280; border: 1px solid #E5E7EB; letter-spacing: .5px; text-transform: uppercase; }
 .badge-sin-acceso { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; letter-spacing: .5px; text-transform: uppercase; }
+.badge-dev { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; letter-spacing: .5px; text-transform: uppercase; }
 
 .card-nombre { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 .card-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
@@ -173,9 +200,38 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   padding: 14px 24px; border-top: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between; background: #F8FAFC;
 }
-.card-link { font-size: 11px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; letter-spacing: .3px; text-transform: uppercase; }
+.card-link { font-size: 11px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; letter-spacing: .3px; text-transform: uppercase; cursor: pointer; border: none; background: none; font-family: var(--sans); }
 .card-link:hover { text-decoration: underline; }
 .card-link-disabled { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .3px; }
+
+/* PROYECTOS */
+.proyectos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 48px; }
+
+.proyecto-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; transition: all .2s;
+  box-shadow: 0 2px 8px rgba(33,51,99,.06);
+}
+.proyecto-card.activo { cursor: pointer; }
+.proyecto-card.activo:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(33,51,99,.14); border-color: var(--card-color); }
+.proyecto-card.inactivo { opacity: .7; }
+
+.proyecto-banner { height: 4px; background: var(--card-color); }
+.proyecto-body { padding: 24px; }
+.proyecto-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.proyecto-icono {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--card-color); display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.proyecto-nombre { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.proyecto-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.proyecto-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.proyecto-tag { font-family: var(--mono); font-size: 9px; padding: 2px 7px; background: #F0F4F8; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); }
+.proyecto-footer {
+  padding: 12px 24px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; background: #F8FAFC;
+}
 
 /* FOOTER */
 .footer { background: var(--navy); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
@@ -296,6 +352,44 @@ function EmpresaCard({ empresa, tieneAcceso }) {
   );
 }
 
+function ProyectoCard({ proyecto }) {
+  const puedeAbrir = proyecto.activo && proyecto.url;
+  const handleClick = () => { if (puedeAbrir) window.open(proyecto.url, "_blank"); };
+
+  return (
+    <div
+      className={`proyecto-card ${proyecto.activo ? "activo" : "inactivo"}`}
+      style={{ "--card-color": proyecto.color }}
+      onClick={handleClick}
+    >
+      <div className="proyecto-banner" />
+      <div className="proyecto-body">
+        <div className="proyecto-top">
+          <div className="proyecto-icono">{proyecto.icono}</div>
+          {proyecto.activo
+            ? <span className="badge-activo">● Activo</span>
+            : <span className="badge-dev">En desarrollo</span>
+          }
+        </div>
+        <div className="proyecto-nombre">{proyecto.nombre}</div>
+        <div className="proyecto-desc">{proyecto.descripcion}</div>
+        <div className="proyecto-tags">
+          {proyecto.tags.map(t => <span key={t} className="proyecto-tag">{t}</span>)}
+        </div>
+      </div>
+      <div className="proyecto-footer">
+        {puedeAbrir
+          ? <span className="card-link" style={{ color: proyecto.color }}>Abrir herramienta →</span>
+          : <span className="card-link-disabled">En desarrollo</span>
+        }
+        <span style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--muted)" }}>
+          {proyecto.tags.length} componentes
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function HomePage({ user, empresasPermitidas, onLogout }) {
   return (
     <>
@@ -322,15 +416,22 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
         <div className="hero-content">
           <div className="hero-eyebrow">Sistema integrado de gestión</div>
           <h1 className="hero-title">Grupo <span>Marítimo</span> ERP</h1>
-          <p className="hero-desc">Seleccioná la empresa para acceder a su portal de gestión.</p>
+          <p className="hero-desc">Seleccioná la empresa o herramienta para acceder a su portal de gestión.</p>
         </div>
       </div>
 
       <div className="content">
         <div className="section-label">Empresas del grupo</div>
-        <div className="empresas-grid">
+        <div className="empresas-grid" style={{ marginBottom: 48 }}>
           {EMPRESAS.map(e => (
             <EmpresaCard key={e.id} empresa={e} tieneAcceso={empresasPermitidas.includes(e.id)} />
+          ))}
+        </div>
+
+        <div className="section-label">Evaluación de proyectos</div>
+        <div className="proyectos-grid">
+          {PROYECTOS.map(p => (
+            <ProyectoCard key={p.id} proyecto={p} />
           ))}
         </div>
       </div>

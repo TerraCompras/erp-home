@@ -157,10 +157,14 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 
 .card-nombre { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 .card-desc   { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-.card-modulos { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 16px; }
-.card-modulo  { font-family: var(--mono); font-size: 9px; padding: 2px 7px; background: #F0F4F8; border: 1px solid var(--border); border-radius: 4px; color: var(--muted); }
-.card-buques  { font-size: 11px; color: var(--muted); margin-bottom: 18px; }
-.card-buques span { font-weight: 500; color: var(--navy); }
+.card-modulos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; }
+.card-modulo  {
+  font-family: var(--sans); font-size: 11px; font-weight: 500;
+  padding: 8px 10px; background: #F0F4F8; border: 1px solid var(--border);
+  border-radius: 8px; color: var(--navy); text-align: center;
+  transition: all .15s;
+}
+.empresa-card.activo .card-modulo:hover { background: #E6EDF5; border-color: var(--mid); }
 .card-footer { padding: 14px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: #F8FAFC; flex-shrink: 0; }
 .card-link { font-size: 11px; font-weight: 600; display: flex; align-items: center; gap: 4px; letter-spacing: .3px; text-transform: uppercase; cursor: pointer; border: none; background: none; font-family: var(--sans); padding: 0; }
 .card-link:hover { text-decoration: underline; }
@@ -247,29 +251,9 @@ function LoginPage() {
 
 function ProyectosSubList() {
   return (
-    <div className="proyectos-list">
+    <div className="card-modulos">
       {PROYECTOS.map(p => (
-        <div
-          key={p.id}
-          className={`proyecto-item ${p.activo && p.url ? "clickable" : ""}`}
-          style={{ "--proj-color": p.color }}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (p.activo && p.url) window.open(p.url, "_blank");
-          }}
-        >
-          <div className="proyecto-item-top">
-            <span className="proyecto-item-nombre">{p.nombre}</span>
-            {p.activo
-              ? <span className="badge-mini-activo">● Activo</span>
-              : <span className="badge-mini-dev">Dev</span>
-            }
-          </div>
-          <div className="proyecto-item-desc">{p.descripcion}</div>
-          <div className="proyecto-item-tags">
-            {p.tags.map(t => <span key={t} className="proyecto-item-tag">{t}</span>)}
-          </div>
-        </div>
+        <span key={p.id} className="card-modulo">{p.nombre}</span>
       ))}
     </div>
   );
@@ -315,9 +299,6 @@ function EmpresaCard({ empresa, tieneAcceso }) {
               <div className="card-modulos">
                 {empresa.modulos.map(m => <span key={m} className="card-modulo">{m}</span>)}
               </div>
-              {empresa.buques.length > 0 && (
-                <div className="card-buques">🚢 <span>{empresa.buques.join(", ")}</span></div>
-              )}
             </>
           )
         }
@@ -325,7 +306,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
 
       <div className="card-footer">
         {esProyectos
-          ? <span className="card-link-disabled">{PROYECTOS.length} proyectos</span>
+          ? <span className="card-link-disabled">Herramientas de análisis</span>
           : !tieneAcceso
             ? <span className="card-link-disabled">Acceso no autorizado</span>
             : puedeAbrir
@@ -334,7 +315,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
         }
         <span style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--muted)" }}>
           {esProyectos
-            ? `${PROYECTOS.filter(p => p.activo).length} activos`
+            ? `${PROYECTOS.length} proyectos`
             : `${empresa.modulos.length} módulos`
           }
         </span>

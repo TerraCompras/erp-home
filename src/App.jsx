@@ -261,13 +261,13 @@ function ProyectosSubList() {
 
 function EmpresaCard({ empresa, tieneAcceso }) {
   const esProyectos = empresa.esProyectos;
-  const puedeAbrir = !esProyectos && empresa.activo && empresa.url && tieneAcceso;
+  // Proyectos card también navega si tiene URL
+  const puedeAbrir = empresa.activo && empresa.url && (tieneAcceso || esProyectos);
   const handleClick = () => { if (puedeAbrir) window.open(empresa.url, "_blank"); };
 
   let claseCard = "empresa-card";
-  if (esProyectos) claseCard += " es-proyectos";
-  else if (!tieneAcceso) claseCard += " sin-acceso";
-  else if (!empresa.activo) claseCard += " inactivo";
+  if (!empresa.activo && !esProyectos) claseCard += " inactivo";
+  else if (!tieneAcceso && !esProyectos) claseCard += " sin-acceso";
   else claseCard += " activo";
 
   return (
@@ -305,8 +305,10 @@ function EmpresaCard({ empresa, tieneAcceso }) {
       </div>
 
       <div className="card-footer">
-        {esProyectos
-          ? <span className="card-link-disabled">Herramientas de análisis</span>
+        {esProyectos && empresa.url
+          ? <span className="card-link" style={{ color: empresa.color }}>Ingresar al portal →</span>
+          : esProyectos
+          ? <span className="card-link-disabled">En desarrollo</span>
           : !tieneAcceso
             ? <span className="card-link-disabled">Acceso no autorizado</span>
             : puedeAbrir

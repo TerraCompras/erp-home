@@ -35,7 +35,7 @@ const EMPRESAS = [
     color: "#235C96",
     url: "https://terra-mare-portal-9w3x.vercel.app",
     activo: true,
-    modulos: ["Transporte Arena"],
+    modulos: [],
     buques: [],
   },
   {
@@ -45,7 +45,7 @@ const EMPRESAS = [
     icono: "📊",
     logo: null,
     color: "#7C3AED",
-    url: null,
+    url: "https://evaluacion-proyectos.vercel.app",
     activo: true,
     modulos: [],
     buques: [],

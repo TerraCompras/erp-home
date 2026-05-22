@@ -140,8 +140,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .empresa-card.activo:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(33,51,99,.14); border-color: var(--card-color); }
 .empresa-card.inactivo { opacity: .65; }
 .empresa-card.sin-acceso { opacity: .4; cursor: not-allowed; }
-.empresa-card.es-proyectos { cursor: default; }
-.empresa-card.es-proyectos:hover { transform: none; box-shadow: 0 2px 8px rgba(33,51,99,.06); border-color: var(--border); }
+.empresa-card.es-proyectos { cursor: pointer; }
+.empresa-card.es-proyectos:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(33,51,99,.14); border-color: var(--card-color); }
 
 .card-banner { height: 6px; background: var(--card-color); flex-shrink: 0; }
 .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
@@ -253,7 +253,14 @@ function ProyectosSubList() {
   return (
     <div className="card-modulos">
       {PROYECTOS.map(p => (
-        <span key={p.id} className="card-modulo">{p.nombre}</span>
+        <span
+          key={p.id}
+          className="card-modulo"
+          style={p.activo && p.url ? { cursor: "pointer" } : {}}
+          onClick={e => { if (p.activo && p.url) { e.stopPropagation(); window.open(p.url, "_self"); } }}
+        >
+          {p.nombre}{p.activo && p.url ? " →" : ""}
+        </span>
       ))}
     </div>
   );
@@ -263,7 +270,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
   const esProyectos = empresa.esProyectos;
   // Proyectos card también navega si tiene URL
   const puedeAbrir = empresa.activo && empresa.url && (tieneAcceso || esProyectos);
-  const handleClick = () => { if (puedeAbrir) window.open(empresa.url, "_blank"); };
+  const handleClick = () => { if (puedeAbrir) window.open(empresa.url, "_self"); };
 
   let claseCard = "empresa-card";
   if (!empresa.activo && !esProyectos) claseCard += " inactivo";

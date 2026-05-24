@@ -338,25 +338,18 @@ function AdminPanel() {
     const load = async () => {
       setLoading(true);
       try {
-        // Leer user_roles + emails desde auth.users via RPC o join
         const { data, error } = await supabase
-          .from("user_roles")
-          .select("user_id, empresas, modulos");
+          .from("usuarios_con_roles")
+          .select("user_id, email, empresas, modulos")
+          .order("email");
         if (error) throw error;
-
-        // Leer emails de auth.users (requiere service role en prod, acá usamos listUsers si está disponible)
-        const { data: { users }, error: e2 } = await supabase.auth.admin.listUsers();
-        const emailMap = {};
-        if (!e2 && users) users.forEach(u => { emailMap[u.id] = u.email; });
-
         setUsuarios((data || []).map(r => ({
           ...r,
-          email: emailMap[r.user_id] || r.user_id.substring(0,8) + "...",
           empresas: r.empresas || [],
-          modulos: r.modulos || [],
+          modulos:  r.modulos  || [],
         })));
       } catch (e) {
-        console.error(e);
+        console.error("Error cargando usuarios:", e.message);
       } finally {
         setLoading(false);
       }

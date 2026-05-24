@@ -339,9 +339,7 @@ function AdminPanel({ onVolver }) {
       setLoading(true);
       try {
         const { data, error } = await supabase
-          .from("usuarios_con_roles")
-          .select("user_id, email, empresas, modulos")
-          .order("email");
+          .rpc("get_usuarios_con_roles");
         if (error) throw error;
         setUsuarios((data || []).map(r => ({
           ...r,

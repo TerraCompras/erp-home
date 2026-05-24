@@ -224,7 +224,7 @@ function LoginPage() {
       <div className="login-card">
         <div className="login-logos">
           <img src="/PL.png" alt="Parana Logística" />
-          <img src="/Cs.png" alt="Clean Sea" />
+          <img src="/CS.png" alt="Clean Sea" />
           <img src="/logo-tm.png" alt="Terra Mare Services" />
         </div>
         <div className="login-title">Grupo Marítimo ERP</div>
@@ -340,7 +340,7 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
         <div className="header-brand">
           <div className="header-logos">
             <img src="/PL.png" alt="Parana Logística" />
-            <img src="/Cs.png" alt="Clean Sea" />
+            <img src="/CS.png" alt="Clean Sea" />
             <img src="/logo-tm.png" alt="Terra Mare" />
           </div>
           <div className="header-divider" />
@@ -425,7 +425,7 @@ export default function App() {
         <div className="loading-inner">
           <div className="loading-logos">
             <img src="/PL.png" alt="PL" />
-            <img src="/Cs.png" alt="CS" />
+            <img src="/CS.png" alt="CS" />
             <img src="/logo-tm.png" alt="TM" />
           </div>
           <div className="loading-text">Cargando...</div>

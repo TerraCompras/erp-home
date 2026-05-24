@@ -328,7 +328,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
 }
 
 // ─── ADMIN PANEL ─────────────────────────────────────────────────────────────
-function AdminPanel() {
+function AdminPanel({ onVolver }) {
   const [usuarios, setUsuarios]   = useState([]);
   const [loading, setLoading]     = useState(true);
   const [saving, setSaving]       = useState({});
@@ -379,7 +379,9 @@ function AdminPanel() {
     setSaving(s => ({ ...s, [userId]: true }));
     setUsuarios(prev => prev.map(u => u.user_id === userId ? { ...u, empresas, modulos } : u));
     try {
-      await supabase.from("user_roles").update({ empresas, modulos }).eq("user_id", userId);
+      const { error } = await supabase.from("user_roles")
+        .upsert({ user_id: userId, empresas, modulos }, { onConflict: "user_id" });
+      if (error) throw error;
       setSaved(s => ({ ...s, [userId]: true }));
       setTimeout(() => setSaved(s => ({ ...s, [userId]: false })), 2000);
     } catch (e) { console.error(e); }
@@ -391,9 +393,14 @@ function AdminPanel() {
 
   return (
     <div className="admin-content">
-      <div className="admin-header-block">
-        <div className="admin-title">🔐 Administración de accesos</div>
-        <div className="admin-subtitle">Gestioná empresas y módulos para cada usuario del sistema.</div>
+      <div className="admin-header-block" style={{ display:"flex", alignItems:"flex-start", justifyContent:"space-between" }}>
+        <div>
+          <div className="admin-title">🔐 Administración de accesos</div>
+          <div className="admin-subtitle">Gestioná empresas y módulos para cada usuario del sistema.</div>
+        </div>
+        <button onClick={onVolver} style={{ fontFamily:"var(--sans)", fontSize:12, fontWeight:600, color:"var(--blue)", background:"none", border:"1px solid var(--border)", padding:"8px 16px", borderRadius:8, cursor:"pointer" }}>
+          ← Volver al inicio
+        </button>
       </div>
 
       {loading ? (
@@ -502,7 +509,7 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
       </header>
 
       {tab === "admin" ? (
-        <AdminPanel />
+        <AdminPanel onVolver={() => setTab("home")} />
       ) : (
         <>
           <div className="hero">

@@ -377,12 +377,23 @@ function AdminPanel({ onVolver }) {
     setSaving(s => ({ ...s, [userId]: true }));
     setUsuarios(prev => prev.map(u => u.user_id === userId ? { ...u, empresas, modulos } : u));
     try {
-      const { error } = await supabase.from("user_roles")
-        .upsert({ user_id: userId, empresas, modulos }, { onConflict: "user_id" });
-      if (error) throw error;
+      // Intentar UPDATE primero, si no existe la fila hacer INSERT
+      const { data: updateData, error: updateError } = await supabase
+        .from("user_roles")
+        .update({ empresas, modulos })
+        .eq("user_id", userId)
+        .select();
+      if (updateError) throw updateError;
+      // Si no actualizó ninguna fila, insertar
+      if (!updateData || updateData.length === 0) {
+        const { error: insertError } = await supabase
+          .from("user_roles")
+          .insert({ user_id: userId, empresas, modulos });
+        if (insertError) throw insertError;
+      }
       setSaved(s => ({ ...s, [userId]: true }));
       setTimeout(() => setSaved(s => ({ ...s, [userId]: false })), 2000);
-    } catch (e) { console.error(e); }
+    } catch (e) { console.error("ERROR GUARDAR:", e); }
     finally { setSaving(s => ({ ...s, [userId]: false })); }
   };
 

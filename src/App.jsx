@@ -49,8 +49,8 @@ const EMPRESAS = [
     color: "#7C3AED",
     url: "https://evaluacion-proyectos.vercel.app",
     activo: true,
-    modulos: ["ais-analyzer", "transporte-arena"],
-    modulosLabel: { "ais-analyzer":"AIS Analyzer", "transporte-arena":"Transporte de Arena" },
+    modulos: ["ais-analyzer", "transporte-arena", "evaluacion-gdm"],
+    modulosLabel: { "ais-analyzer":"AIS Analyzer", "transporte-arena":"Transporte de Arena", "evaluacion-gdm":"Evaluación GdM" },
     esProyectos: true,
   },
 ];
@@ -58,6 +58,7 @@ const EMPRESAS = [
 const PROYECTOS = [
   { id:"ais-analyzer", nombre:"AIS Analyzer", color:"#235C96", url:null, activo:false, tags:["AIS","TIR / VAN","Base de zarpe"] },
   { id:"arena", nombre:"Transporte de Arena", color:"#854F0B", url:"https://terra-mare-portal-9w3x.vercel.app", activo:true, tags:["Monte Carlo","Logística fluvial"] },
+  { id:"evaluacion-gdm", nombre:"Evaluación GdM", color:"#213363", url:"https://evaluacion-gdm.vercel.app", activo:true, tags:["P&L","Cashflow","TIR / VAN"] },
 ];
 
 const CSS = `

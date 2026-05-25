@@ -143,7 +143,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .badge-sin    { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
 .card-nombre { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 .card-desc   { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-.card-modulos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; }
+.card-modulos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; padding: 0 2px; }
 .card-modulo { font-family: var(--sans); font-size: 11px; font-weight: 500; padding: 8px 10px; background: #F0F4F8; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-align: center; transition: all .15s; }
 .card-modulo.activo { background: var(--card-color-light, #F0F4F8); border-color: var(--card-color); color: var(--card-color); cursor: pointer; }
 .card-modulo.activo:hover { background: var(--card-color); color: #fff; }
@@ -256,17 +256,15 @@ function LoginPage() {
 // ─── PROYECTOS SUBLIST ────────────────────────────────────────────────────────
 function ProyectosSubList() {
   return (
-    <div className="proyectos-list">
+    <div className="card-modulos">
       {PROYECTOS.map(p => (
-        <div key={p.id} className={`proyecto-item ${p.activo ? "activo" : ""}`}
-          style={{ "--proj-color": p.color }}
-          onClick={() => p.activo && p.url && window.open(p.url, "_blank")}>
-          <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-            <div className="proyecto-nombre">{p.nombre}</div>
-            {p.activo ? <span className="badge-activo">● Activo</span> : <span className="badge-prox">Próximo</span>}
-          </div>
-          <div className="proyecto-tags">{p.tags.map(t => <span key={t} className="proyecto-tag">{t}</span>)}</div>
-        </div>
+        <span key={p.id}
+          className={`card-modulo ${p.activo ? "activo" : ""}`}
+          style={{ "--card-color": p.color, "--card-color-light": `${p.color}18` }}
+          onClick={e => { e.stopPropagation(); if (p.activo && p.url) window.open(p.url, "_self"); }}
+        >
+          {p.nombre}
+        </span>
       ))}
     </div>
   );

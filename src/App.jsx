@@ -133,7 +133,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .empresa-card.es-proyectos { cursor: pointer; }
 .empresa-card.es-proyectos:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(33,51,99,.14); border-color: var(--card-color); }
 .card-banner { height: 6px; background: var(--card-color); flex-shrink: 0; }
-.card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; box-sizing: border-box; }
 .card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
 .card-logo { width: 52px; height: 52px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #f8f8f8; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
 .card-logo img { width: 100%; height: 100%; object-fit: cover; }
@@ -143,8 +143,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .badge-sin    { font-family: var(--mono); font-size: 8px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; }
 .card-nombre { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 .card-desc   { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
-.card-modulos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; padding: 0 2px; }
-.card-modulo { font-family: var(--sans); font-size: 11px; font-weight: 500; padding: 8px 10px; background: #F0F4F8; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-align: center; transition: all .15s; }
+.card-modulos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 16px; justify-items: stretch; }
+.card-modulo { font-family: var(--sans); font-size: 11px; font-weight: 500; padding: 8px 6px; background: #F0F4F8; border: 1px solid var(--border); border-radius: 8px; color: var(--navy); text-align: center; transition: all .15s; width: 100%; }
 .card-modulo.activo { background: var(--card-color-light, #F0F4F8); border-color: var(--card-color); color: var(--card-color); cursor: pointer; }
 .card-modulo.activo:hover { background: var(--card-color); color: #fff; }
 .card-footer { padding: 14px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: #FAFBFC; }

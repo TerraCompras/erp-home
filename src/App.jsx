@@ -13,8 +13,8 @@ const EMPRESAS = [
     color: "#213363",
     url: "https://erp-portal-fawn.vercel.app",
     activo: true,
-    modulos: ["compras", "viveres", "projects", "mantenimiento", "reparaciones", "certificados", "documentos", "tripulaciones"],
-    modulosLabel: { compras:"Compras", viveres:"Víveres", projects:"Projects", mantenimiento:"Mantenimiento", reparaciones:"Reparaciones", certificados:"Certificados", documentos:"Documentos", tripulaciones:"Tripulaciones" },
+    modulos: ["compras", "viveres", "projects", "mantenimiento", "reparaciones", "certificados", "documentos", "tripulaciones", "cost-tracker"],
+    modulosLabel: { compras:"Compras", viveres:"Víveres", projects:"Projects", mantenimiento:"Mantenimiento", reparaciones:"Reparaciones", certificados:"Certificados", documentos:"Documentos", tripulaciones:"Tripulaciones", "cost-tracker":"Cost Tracker" },
   },
   {
     id: "cleansea",
@@ -501,7 +501,7 @@ function EmpresaCard({ empresa, tieneAcceso }) {
   // Proyectos: misma lógica que las demás — abre el portal si tiene URL
   const handleClick = () => {
     if (puedeAbrir || (esProyectos && empresa.url)) {
-      window.open(empresa.url, "_self");
+      window.location.href = empresa.url;
     }
   };
 

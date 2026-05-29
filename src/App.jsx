@@ -114,7 +114,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   color: var(--teal2); text-transform: uppercase; margin-bottom: 24px;
 }
 .login-left-logo-wrap { margin-bottom: 20px; }
-.login-left-logo-img  { height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.92; }
+.login-left-logo-img  { height: 160px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.92; }
 .login-left-line {
   width: 48px; height: 3px; background: var(--teal); margin-bottom: 20px;
 }
@@ -193,7 +193,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
 .header-integra-logo { display: flex; align-items: center; }
-.header-integra-logo img { height: 34px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; }
+.header-integra-logo img { height: 52px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; }
 .header-divider { width: 1px; height: 24px; background: rgba(26,122,110,0.35); margin: 0 6px; }
 .header-main {
   font-size: 13px; font-weight: 800; color: #fff;

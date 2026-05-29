@@ -114,7 +114,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   color: var(--teal2); text-transform: uppercase; margin-bottom: 24px;
 }
 .login-left-logo-wrap { margin-bottom: 20px; }
-.login-left-logo-img  { height: 160px; width: auto; object-fit: contain; opacity: 0.95; }
+.login-left-logo-img  { height: 340px; width: auto; object-fit: contain; opacity: 0.95; }
 .login-left-line {
   width: 48px; height: 3px; background: var(--teal); margin-bottom: 20px;
 }
@@ -435,7 +435,6 @@ function LoginPage() {
       <div className="login-split">
         {/* LEFT — branding */}
         <div className="login-left">
-          <div className="login-left-eyebrow">ERP · Plataforma Documental Marítima & Logística</div>
           <div className="login-left-logo-wrap">
             <img src="/integralogo.png" alt="INTEGRA" className="login-left-logo-img" />
           </div>

@@ -193,7 +193,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
 .header-integra-logo { display: flex; align-items: center; }
-.header-integra-logo img { height: 52px; width: auto; object-fit: contain; opacity: 0.95; }
+.header-integra-logo img { height: 44px; width: auto; object-fit: contain; opacity: 0.95; }
 .header-divider { width: 1px; height: 24px; background: rgba(26,122,110,0.35); margin: 0 6px; }
 .header-main {
   font-size: 13px; font-weight: 800; color: #fff;
@@ -731,11 +731,6 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
         <div className="header-brand">
           <div className="header-integra-logo">
             <img src="/integralogo.png" alt="INTEGRA" />
-          </div>
-          <div className="header-divider" />
-          <div>
-            <div className="header-main">INTEGRA</div>
-            <div className="header-sub">ERP · Plataforma Documental Marítima & Logística</div>
           </div>
         </div>
         <div className="header-right">

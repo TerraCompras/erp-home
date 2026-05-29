@@ -224,7 +224,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 /* ── HERO ── */
 .hero {
   background: linear-gradient(160deg, var(--navy) 0%, var(--navy2) 60%, var(--navy3) 100%);
-  padding: 28px 40px 24px; position: relative; overflow: hidden;
+  padding: 28px 40px 24px; position: relative; overflow: hidden; height: 370px; display: flex; align-items: center;
 }
 .hero::before {
   content: ''; position: absolute;

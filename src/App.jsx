@@ -11,7 +11,7 @@ const EMPRESAS = [
     icono: "🚢",
     logo: "/PL.png",
     color: "#213363",
-    url: "https://erp-portal-fawn.vercel.app",
+    url: "https://integra.paranalogistica.com.ar",
     activo: true,
     modulos: ["compras", "viveres", "projects", "mantenimiento", "reparaciones", "certificados", "documentos", "tripulaciones", "cost-tracker"],
     modulosLabel: { compras:"Compras", viveres:"Víveres", projects:"Projects", mantenimiento:"Mantenimiento", reparaciones:"Reparaciones", certificados:"Certificados", documentos:"Documentos", tripulaciones:"Tripulaciones", "cost-tracker":"Cost Tracker" },
@@ -23,7 +23,7 @@ const EMPRESAS = [
     icono: "⚓",
     logo: "/CS.png",
     color: "#1A7A6E",
-    url: "https://clean-sea-portal.vercel.app",
+    url: "https://integra.cleansea.com.ar",
     activo: true,
     modulos: ["inventario", "viveres"],
     modulosLabel: { inventario:"Inventario", viveres:"Víveres" },
@@ -35,7 +35,7 @@ const EMPRESAS = [
     icono: "🌊",
     logo: "/logo-tm.png",
     color: "#235C96",
-    url: "https://terra-mare-portal-9w3x.vercel.app",
+    url: "https://integra.home.terra-mare.com.ar",
     activo: true,
     modulos: ["hsqe", "pipeline", "dashboards"],
     modulosLabel: { hsqe:"HSQE", pipeline:"Pipeline", dashboards:"Dashboards" },
@@ -60,19 +60,19 @@ const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap');
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy:    #0B1629;
+  --navy:    #0D1B2E;
   --navy2:   #132040;
-  --navy3:   #1a2a5e;
-  --gold:    #B8942A;
-  --gold2:   #D4AA3A;
-  --gold-lt: rgba(184,148,42,0.15);
+  --navy3:   #213363;
+  --teal:    #1A7A6E;
+  --teal2:   #22998A;
+  --teal-lt: rgba(26,122,110,0.15);
   --blue:    #235C96;
   --mid:     #6381A7;
   --light:   #A5B5CC;
   --bg:      #F0F4F8;
   --surface: #FFFFFF;
   --border:  #D6E0ED;
-  --text:    #0B1629;
+  --text:    #0D1B2E;
   --muted:   #6381A7;
   --sans:    'Montserrat', sans-serif;
   --mono:    'DM Mono', monospace;
@@ -89,14 +89,14 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 }
 .login-bg-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(11,22,41,0.92) 0%, rgba(11,22,41,0.75) 60%, rgba(11,22,41,0.92) 100%);
+  background: linear-gradient(135deg, rgba(13,27,46,0.95) 0%, rgba(33,51,99,0.80) 60%, rgba(13,27,46,0.95) 100%);
   z-index: 1;
 }
 .login-bg-lines {
   position: absolute; inset: 0; z-index: 0;
   background-image:
-    linear-gradient(rgba(184,148,42,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184,148,42,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(26,122,110,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,122,110,0.06) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 .login-split {
@@ -107,19 +107,16 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   flex: 1;
   display: flex; flex-direction: column; justify-content: center;
   padding: 80px 60px;
-  border-right: 1px solid rgba(184,148,42,0.15);
+  border-right: 1px solid rgba(26,122,110,0.2);
 }
 .login-left-eyebrow {
   font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 24px;
+  color: var(--teal2); text-transform: uppercase; margin-bottom: 24px;
 }
-.login-left-title {
-  font-size: 64px; font-weight: 900; color: #fff;
-  line-height: 0.9; letter-spacing: -2px; margin-bottom: 20px;
-}
-.login-left-title span { color: var(--gold); display: block; }
+.login-left-logo-wrap { margin-bottom: 20px; }
+.login-left-logo-img  { height: 80px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.92; }
 .login-left-line {
-  width: 48px; height: 3px; background: var(--gold); margin-bottom: 20px;
+  width: 48px; height: 3px; background: var(--teal); margin-bottom: 20px;
 }
 .login-left-sub {
   font-size: 13px; color: rgba(255,255,255,0.45);
@@ -141,7 +138,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .login-card {
   width: 100%;
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(184,148,42,0.2);
+  border: 1px solid rgba(26,122,110,0.3);
   border-radius: 16px;
   padding: 40px 36px;
   backdrop-filter: blur(20px);
@@ -167,15 +164,15 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   transition: border-color .15s;
 }
 .login-fg input::placeholder { color: rgba(255,255,255,0.2); }
-.login-fg input:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
+.login-fg input:focus { border-color: var(--teal); background: rgba(255,255,255,0.09); }
 .login-btn {
   width: 100%; padding: 12px; margin-top: 8px;
-  background: var(--gold); color: var(--navy);
+  background: var(--teal); color: #fff;
   border: none; border-radius: 8px;
   font-family: var(--sans); font-size: 13px; font-weight: 700;
   cursor: pointer; transition: background .15s; letter-spacing: .5px;
 }
-.login-btn:hover { background: var(--gold2); }
+.login-btn:hover { background: var(--teal2); }
 .login-btn:disabled { opacity: .5; cursor: not-allowed; }
 .login-error {
   background: rgba(239,68,68,0.12); color: #FCA5A5;
@@ -192,21 +189,18 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   background: var(--navy); padding: 0 40px;
   display: flex; align-items: center; justify-content: space-between;
   height: 60px; position: sticky; top: 0; z-index: 10;
-  border-bottom: 1px solid rgba(184,148,42,0.2);
+  border-bottom: 1px solid rgba(26,122,110,0.25);
 }
 .header-brand { display: flex; align-items: center; gap: 14px; }
-.header-logos { display: flex; align-items: center; gap: 8px; }
-.header-logos img {
-  width: 28px; height: 28px; border-radius: 50%;
-  object-fit: cover; border: 1.5px solid rgba(255,255,255,0.2);
-}
-.header-divider { width: 1px; height: 24px; background: rgba(184,148,42,0.25); margin: 0 6px; }
+.header-integra-logo { display: flex; align-items: center; }
+.header-integra-logo img { height: 34px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.9; }
+.header-divider { width: 1px; height: 24px; background: rgba(26,122,110,0.35); margin: 0 6px; }
 .header-main {
   font-size: 13px; font-weight: 800; color: #fff;
   letter-spacing: 2px; text-transform: uppercase;
 }
 .header-sub {
-  font-size: 9px; color: var(--gold); letter-spacing: 1px;
+  font-size: 9px; color: var(--teal2); letter-spacing: 1px;
   font-family: var(--mono); margin-top: 1px; text-transform: uppercase;
 }
 .header-right { display: flex; align-items: center; gap: 14px; }
@@ -219,13 +213,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 }
 .logout-btn:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
 .admin-tab-btn {
-  background: rgba(184,148,42,0.12); border: 1px solid rgba(184,148,42,0.3);
-  color: var(--gold); font-family: var(--sans); font-size: 10px; font-weight: 700;
+  background: rgba(26,122,110,0.12); border: 1px solid rgba(26,122,110,0.3);
+  color: var(--teal2); font-family: var(--sans); font-size: 10px; font-weight: 700;
   padding: 5px 12px; border-radius: 6px; cursor: pointer; letter-spacing: .3px;
   transition: all .15s;
 }
-.admin-tab-btn:hover { background: rgba(184,148,42,0.22); }
-.admin-tab-btn.active { background: rgba(184,148,42,0.25); color: var(--gold2); border-color: rgba(184,148,42,0.5); }
+.admin-tab-btn:hover { background: rgba(26,122,110,0.22); }
+.admin-tab-btn.active { background: rgba(26,122,110,0.25); color: var(--teal2); border-color: rgba(26,122,110,0.5); }
 
 /* ── HERO ── */
 .hero {
@@ -236,25 +230,25 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   content: ''; position: absolute;
   bottom: -80px; right: -80px;
   width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(184,148,42,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(26,122,110,0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero::after {
   content: ''; position: absolute;
   top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--teal), transparent);
 }
 .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; }
 .hero-eyebrow {
   font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
+  color: var(--teal2); text-transform: uppercase; margin-bottom: 14px;
 }
 .hero-title {
   font-size: 40px; font-weight: 900; color: #fff;
   line-height: 1.05; margin-bottom: 6px; letter-spacing: -1px;
 }
-.hero-title span { color: var(--gold); }
-.hero-line { width: 40px; height: 2px; background: var(--gold); margin: 16px 0; }
+.hero-title span { color: var(--teal2); }
+.hero-line { width: 40px; height: 2px; background: var(--teal); margin: 16px 0; }
 .hero-desc {
   font-size: 13px; color: rgba(255,255,255,0.45);
   max-width: 480px; line-height: 1.7; font-style: italic;
@@ -292,7 +286,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .card-banner { height: 4px; background: var(--card-color); flex-shrink: 0; }
 .card-gold-accent {
   height: 4px; flex-shrink: 0;
-  background: linear-gradient(90deg, var(--gold) 0%, var(--gold2) 100%);
+  background: linear-gradient(90deg, var(--teal) 0%, var(--teal2) 100%);
 }
 .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
 .card-top {
@@ -355,13 +349,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 
 /* ── FOOTER ── */
 .footer {
-  border-top: 1px solid rgba(184,148,42,0.2);
+  border-top: 1px solid rgba(26,122,110,0.2);
   padding: 20px 40px; display: flex; align-items: center;
   justify-content: space-between;
   background: var(--navy);
 }
 .footer-left  { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.25); }
-.footer-right { font-family: var(--mono); font-size: 10px; color: var(--gold); opacity: 0.5; }
+.footer-right { font-family: var(--mono); font-size: 10px; color: var(--teal2); opacity: 0.6; }
 
 /* ── LOADING ── */
 .loading-page {
@@ -369,11 +363,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   justify-content: center; background: var(--navy);
 }
 .loading-inner { text-align: center; }
-.loading-logos { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; }
-.loading-logos img {
-  width: 40px; height: 40px; border-radius: 50%;
-  object-fit: cover; opacity: .5;
-}
+.loading-integra-logo { display: flex; justify-content: center; margin-bottom: 24px; }
+.loading-integra-logo img { height: 60px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; }
 .loading-text {
   font-family: var(--mono); font-size: 10px;
   color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase;
@@ -442,9 +433,9 @@ function LoginPage() {
       <div className="login-split">
         {/* LEFT — branding */}
         <div className="login-left">
-          <div className="login-left-eyebrow">Sistema integrado de gestión</div>
-          <div className="login-left-title">
-            GRUPO<span>PL</span>
+          <div className="login-left-eyebrow">ERP · Plataforma Documental Marítima & Logística</div>
+          <div className="login-left-logo-wrap">
+            <img src="/integralogo.png" alt="INTEGRA" className="login-left-logo-img" />
           </div>
           <div className="login-left-line" />
           <div className="login-left-sub">
@@ -469,7 +460,7 @@ function LoginPage() {
                 type="email" value={email}
                 onChange={e => setEmail(e.target.value)}
                 onKeyDown={handleKey}
-                placeholder="usuario@grupopl.com.ar"
+                placeholder="usuario@terra-mare.com.ar"
                 autoFocus
               />
             </div>
@@ -485,7 +476,7 @@ function LoginPage() {
             <button className="login-btn" onClick={handleLogin} disabled={loading || !email || !pass}>
               {loading ? "Ingresando..." : "Ingresar →"}
             </button>
-            <div className="login-footer">Grupo PL · Acceso restringido · Confidencial</div>
+            <div className="login-footer">INTEGRA · Acceso restringido · Confidencial</div>
           </div>
         </div>
       </div>
@@ -738,15 +729,13 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
     <>
       <header className="header">
         <div className="header-brand">
-          <div className="header-logos">
-            <img src="/PL.png" alt="Parana Logística" />
-            <img src="/CS.png" alt="Clean Sea" />
-            <img src="/logo-tm.png" alt="Terra Mare" />
+          <div className="header-integra-logo">
+            <img src="/integralogo.png" alt="INTEGRA" />
           </div>
           <div className="header-divider" />
           <div>
-            <div className="header-main">Grupo PL</div>
-            <div className="header-sub">Servicios Marítimos Integrados</div>
+            <div className="header-main">INTEGRA</div>
+            <div className="header-sub">ERP · Plataforma Documental Marítima & Logística</div>
           </div>
         </div>
         <div className="header-right">
@@ -769,8 +758,8 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
         <>
           <div className="hero">
             <div className="hero-content">
-              <div className="hero-eyebrow">Sistema integrado de gestión</div>
-              <h1 className="hero-title">Grupo <span>PL</span></h1>
+              <div className="hero-eyebrow">ERP · Plataforma Documental Marítima & Logística</div>
+              <h1 className="hero-title"><span>INTEGRA</span></h1>
               <div className="hero-line" />
               <p className="hero-desc">Seleccioná la empresa para acceder a su portal de gestión.</p>
             </div>
@@ -788,7 +777,7 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
             </div>
           </div>
           <footer className="footer">
-            <div className="footer-left">Grupo PL · Sistema de Gestión · Confidencial</div>
+            <div className="footer-left">INTEGRA · Plataforma Documental Marítima & Logística · Confidencial</div>
             <div className="footer-right">v2.0 — {new Date().getFullYear()}</div>
           </footer>
         </>
@@ -838,10 +827,8 @@ export default function App() {
     <div className="loading-page">
       <style>{CSS}</style>
       <div className="loading-inner">
-        <div className="loading-logos">
-          <img src="/PL.png" alt="PL" />
-          <img src="/CS.png" alt="CS" />
-          <img src="/logo-tm.png" alt="TM" />
+        <div className="loading-integra-logo">
+          <img src="/integralogo.png" alt="INTEGRA" />
         </div>
         <div className="loading-text">Cargando...</div>
       </div>

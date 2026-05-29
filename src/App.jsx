@@ -243,6 +243,8 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
   color: var(--teal2); text-transform: uppercase; margin-bottom: 14px;
 }
+.hero-logo-wrap { margin: 12px 0 4px; }
+.hero-logo-img  { height: 120px; width: auto; object-fit: contain; }
 .hero-title {
   font-size: 40px; font-weight: 900; color: #fff;
   line-height: 1.05; margin-bottom: 6px; letter-spacing: -1px;
@@ -754,7 +756,9 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
           <div className="hero">
             <div className="hero-content">
               <div className="hero-eyebrow">ERP · Plataforma Documental Marítima & Logística</div>
-              <h1 className="hero-title"><span>INTEGRA</span></h1>
+              <div className="hero-logo-wrap">
+                <img src="/integralogo.png" alt="INTEGRA" className="hero-logo-img" />
+              </div>
               <div className="hero-line" />
               <p className="hero-desc">Seleccioná la empresa para acceder a su portal de gestión.</p>
             </div>

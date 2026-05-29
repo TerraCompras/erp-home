@@ -758,7 +758,6 @@ function HomePage({ user, empresasPermitidas, onLogout }) {
               <div className="hero-logo-wrap">
                 <img src="/integralogo.png" alt="INTEGRA" className="hero-logo-img" />
               </div>
-              <div className="hero-line" />
               <p className="hero-desc">Seleccioná la empresa para acceder a su portal de gestión.</p>
             </div>
           </div>

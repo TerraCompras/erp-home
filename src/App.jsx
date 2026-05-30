@@ -284,6 +284,11 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   .login-left-logos { justify-content: center; margin-top: 24px; }
   .login-right { width: 100%; padding: 32px 24px 48px; }
   .login-card { padding: 28px 24px; }
+  .hero { padding: 24px 20px; height: auto !important; }
+  .hero-logo-img { height: 160px; max-width: 90vw; }
+  .hero-content { text-align: center; }
+  .header { padding: 0 16px; height: 52px; }
+  .header-integra-logo img { height: 32px; }
 }
 
 /* ── EMPRESA CARD ── */

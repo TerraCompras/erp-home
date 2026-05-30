@@ -270,6 +270,22 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 @media (max-width: 1100px) { .empresas-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 580px)  { .empresas-grid { grid-template-columns: 1fr; } }
 
+@media (max-width: 768px) {
+  .login-split { flex-direction: column; }
+  .login-left {
+    padding: 48px 32px 32px;
+    border-right: none;
+    border-bottom: 1px solid rgba(26,122,110,0.2);
+    align-items: center; text-align: center;
+  }
+  .login-left-logo-img { height: 200px; }
+  .login-left-line { margin: 16px auto; }
+  .login-left-sub { max-width: 100%; }
+  .login-left-logos { justify-content: center; margin-top: 24px; }
+  .login-right { width: 100%; padding: 32px 24px 48px; }
+  .login-card { padding: 28px 24px; }
+}
+
 /* ── EMPRESA CARD ── */
 .empresa-card {
   background: var(--surface); border: 1px solid var(--border);

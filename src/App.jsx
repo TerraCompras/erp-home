@@ -6,7 +6,7 @@ const ADMIN_EMAIL = "federico.ruiz@terra-mare.com.ar";
 const EMPRESAS = [
   {
     id: "parana",
-    nombre: "Parana Logística",
+    nombre: "PL Offshore",
     descripcion: "Transporte marítimo y fluvial sobre la Hidrovía, apoyo offshore y rescate y salvamento.",
     icono: "🚢",
     logo: "/PL.png",
